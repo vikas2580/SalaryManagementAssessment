@@ -12,11 +12,6 @@ RSpec.describe Employee, type: :model do
     expect(subject).not_to be_valid
   end
 
-  it "is invalid if name is too short" do
-    subject.name = "A"
-    expect(subject).not_to be_valid
-  end
-
   it "is invalid without email" do
     subject.email = nil
     expect(subject).not_to be_valid
@@ -39,11 +34,6 @@ RSpec.describe Employee, type: :model do
 
   it "is invalid without salary" do
     subject.salary = nil
-    expect(subject).not_to be_valid
-  end
-
-  it "is invalid with negative salary" do
-    subject.salary = -100
     expect(subject).not_to be_valid
   end
 

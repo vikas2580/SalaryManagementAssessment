@@ -74,7 +74,6 @@ RSpec.describe "Employees API", type: :request do
     end
   end
 
-  # DELETE
   describe "DELETE /api/v1/employees/:id" do
     it "deletes employee" do
       delete "/api/v1/employees/#{employee_id}"

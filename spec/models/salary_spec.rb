@@ -11,4 +11,8 @@ RSpec.describe Salary, type: :model do
       deduction: 2000
     )
   end
+   it "is invalid without base_salary" do
+    salary = build(:salary, base_salary: nil, employee: employee)
+    expect(salary).not_to be_valid
+  end
 end
