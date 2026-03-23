@@ -3,60 +3,40 @@ class Api::V1::SalariesController < ApplicationController
 
   def index
     salaries = Salary.all
-    render json: {
-      status: "success",
-      data: ActiveModelSerializers::SerializableResource.new(salaries)
-    }
+     render json: salaries, each_serializer: SalarySerializer
   end
 
   def show
-    render json: {
-      status: "success",
-      data: ActiveModelSerializers::SerializableResource.new(@salary)
-    }
+    render json: @salary, serializer: SalarySerializer
   end
 
   def create
     salary = Salary.new(salary_params)
 
     if salary.save
-      render json: {
-        status: "success",
-        data: ActiveModelSerializers::SerializableResource.new(salary)
-      }, status: :created
+       render json: salary, serializer: SalarySerializer, status: :created
     else
-      render json: {
-        status: "error",
-        errors: salary.errors.full_messages
-      }, status: :unprocessable_entity
+      render json: { errors: salary.errors.full_messages }, status: :unprocessable_content
     end
   end
 
   def update
     if @salary.update(salary_params)
-      render json: {
-        status: "success",
-        data: ActiveModelSerializers::SerializableResource.new(@salary)
-      }
+       render json: @salary, serializer: SalarySerializer
     else
-      render json: {
-        status: "error",
-        errors: @salary.errors.full_messages
-      }, status: :unprocessable_entity
+      render json: { errors: @salary.errors.full_messages }, status: :unprocessable_content
     end
   end
 
   def destroy
     @salary.destroy
-    render json: { status: "success", message: "Deleted" }
+     render json: { message: "Salary deleted successfully" }
   end
 
   private
 
   def set_salary
     @salary = Salary.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render json: { status: "error", message: "Salary not found" }, status: :not_found
   end
 
   def salary_params

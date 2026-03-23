@@ -11,8 +11,8 @@ RSpec.describe "Employees API", type: :request do
       expect(response).to have_http_status(:ok)
       json = JSON.parse(response.body)
 
-      expect(json["status"]).to eq("success")
-      expect(json["data"].length).to be >= 3
+      expect(response).to have_http_status(:ok)
+      expect(json.length).to eq(3)
     end
   end
 
@@ -23,7 +23,7 @@ RSpec.describe "Employees API", type: :request do
       expect(response).to have_http_status(:ok)
       json = JSON.parse(response.body)
 
-      expect(json["data"]["id"]).to eq(employee_id)
+      expect(json["id"]).to eq(employee_id)
     end
 
     it "returns not found" do
@@ -51,7 +51,7 @@ RSpec.describe "Employees API", type: :request do
       expect(response).to have_http_status(:created)
       json = JSON.parse(response.body)
 
-      expect(json["data"]["name"]).to eq("Test")
+      expect(json["name"]).to eq("Test")
     end
 
     it "returns validation error" do
@@ -70,7 +70,7 @@ RSpec.describe "Employees API", type: :request do
       expect(response).to have_http_status(:ok)
       json = JSON.parse(response.body)
 
-      expect(json["data"]["name"]).to eq("Updated")
+      expect(json["name"]).to eq("Updated")
     end
   end
 
