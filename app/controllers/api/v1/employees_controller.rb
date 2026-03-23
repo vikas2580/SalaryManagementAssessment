@@ -9,6 +9,7 @@ class Api::V1::EmployeesController < ApplicationController
   def show
     render json: @employee, serializer: EmployeeSerializer
   end
+  
 
   def create
     employee = Employee.new(employee_params)
