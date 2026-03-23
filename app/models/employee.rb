@@ -9,7 +9,6 @@ class Employee < ApplicationRecord
             format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validates :department, presence: true
-
   validates :salary,
             presence: true,
             numericality: { greater_than_or_equal_to: 0 }
