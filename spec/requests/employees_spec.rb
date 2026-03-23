@@ -12,7 +12,7 @@ RSpec.describe "Employees API", type: :request do
       json = JSON.parse(response.body)
 
       expect(response).to have_http_status(:ok)
-      expect(json.length).to eq(1)
+      expect(json.length).to eq(3)
     end
   end
 
