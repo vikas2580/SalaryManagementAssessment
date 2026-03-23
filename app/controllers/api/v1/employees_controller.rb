@@ -1,5 +1,5 @@
 class Api::V1::EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :update, :destroy]
+  before_action :set_employee, only: [ :show, :update, :destroy ]
 
   def index
     employees = Employee.all
@@ -8,19 +8,19 @@ class Api::V1::EmployeesController < ApplicationController
       data: ActiveModelSerializers::SerializableResource.new(employees)
     }
   end
-  
+
   def show
     render json: {
       status: "success",
       data: ActiveModelSerializers::SerializableResource.new(@employee)
     }
   end
-  
+
   def create
     employee = Employee.new(employee_params)
     if employee.save
       render json: {
-        status: "success",  
+        status: "success",
         message: "Employee created successfully",
         data: ActiveModelSerializers::SerializableResource.new(employee)
       }, status: :created
@@ -31,7 +31,7 @@ class Api::V1::EmployeesController < ApplicationController
       }, status: :unprocessable_entity
     end
   end
-  
+
   def update
     if @employee.update(employee_params)
       render json: {
@@ -46,7 +46,7 @@ class Api::V1::EmployeesController < ApplicationController
       }, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     @employee.destroy
     render json: {

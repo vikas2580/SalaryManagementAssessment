@@ -48,7 +48,7 @@ RSpec.describe "Salaries API", type: :request do
       expect(response).to have_http_status(:created)
       json = JSON.parse(response.body)
 
-      expect(json["data"]["total_salary"].to_f ).to eq(42000)
+      expect(json["data"]["total_salary"].to_f).to eq(42000)
     end
 
     it "fails without base_salary" do
@@ -67,7 +67,7 @@ RSpec.describe "Salaries API", type: :request do
       expect(response).to have_http_status(:ok)
       json = JSON.parse(response.body)
 
-      expect(json["data"]["total_salary"].to_f ).to eq(58000)
+      expect(json["data"]["total_salary"].to_f).to eq(58000)
     end
   end
 

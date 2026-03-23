@@ -5,7 +5,7 @@ class CreateEmployees < ActiveRecord::Migration[7.2]
       t.string :email, null: false
       t.string :department
       t.decimal :salary, precision: 10, scale: 2, default: 0.0
-      
+
       t.timestamps
     end
     add_index :employees, :email, unique: true

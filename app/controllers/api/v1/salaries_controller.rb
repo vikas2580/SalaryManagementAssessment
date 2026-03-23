@@ -1,5 +1,5 @@
 class Api::V1::SalariesController < ApplicationController
-  before_action :set_salary, only: [:show, :update, :destroy]
+  before_action :set_salary, only: [ :show, :update, :destroy ]
 
   def index
     salaries = Salary.all
