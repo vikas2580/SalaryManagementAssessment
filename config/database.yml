@@ -12,7 +12,7 @@ development:
 
 test:
   <<: *default
-  database: salary_management
+  database: salary_management_test
 
 production:
   <<: *default
