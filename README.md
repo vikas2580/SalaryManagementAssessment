@@ -1,24 +1,25 @@
-# README
+# Salary Management API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Features
+- Employee CRUD APIs
+- Salary CRUD APIs
+- Automatic salary calculation (base + bonus - deduction)
+- RSpec tests using TDD approach
+- GitHub Actions CI
 
-Things you may want to cover:
+# Business Logic
+Salary is calculated as:
+total_salary = base_salary + bonus - deduction
 
-* Ruby version
+#Tech Stack
+- Ruby on Rails
+- PostgreSQL
+- RSpec
+- ActiveModelSerializers
 
-* System dependencies
+## 📦 Setup
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bundle install
+rails db:create db:migrate
+rails s
