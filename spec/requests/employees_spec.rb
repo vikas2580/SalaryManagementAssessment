@@ -4,7 +4,6 @@ RSpec.describe "Employees API", type: :request do
   let!(:employees) { create_list(:employee, 3) }
   let(:employee_id) { employees.first.id }
 
-  # GET INDEX
   describe "GET /api/v1/employees" do
     it "returns all employees" do
       get "/api/v1/employees"
@@ -17,7 +16,6 @@ RSpec.describe "Employees API", type: :request do
     end
   end
 
-  # GET SHOW
   describe "GET /api/v1/employees/:id" do
     it "returns employee" do
       get "/api/v1/employees/#{employee_id}"
@@ -35,7 +33,6 @@ RSpec.describe "Employees API", type: :request do
     end
   end
 
-  # POST CREATE
   describe "POST /api/v1/employees" do
     let(:valid_params) do
       {
@@ -64,7 +61,6 @@ RSpec.describe "Employees API", type: :request do
     end
   end
 
-  # UPDATE
   describe "PUT /api/v1/employees/:id" do
     it "updates employee" do
       put "/api/v1/employees/#{employee_id}", params: {
